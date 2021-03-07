@@ -1,0 +1,101 @@
+{
+  "Vehicule": {
+    "table": "type_vehicule",
+    "auth": [],
+    "name": "Modifier véhicule",
+    "columns": {
+      "idCategorie":{
+        "type":"foreign",
+        "col":"id_categorie",
+        "label":"Catégorie",
+        "foreign":{
+          "table":"categorie_vehicule",
+          "primary":"id",
+          "label":"nom",
+          "image":"categorie_vehicule.logo"
+        }
+      },
+      "Nom":{
+        "type":"varchar(50)",
+        "col":"nom",
+        "label":"Intitulé"
+      },
+      "Longueur":{
+        "type":"decimal(5,2)",
+        "col":"longueur",
+        "icon":"trending_flat",
+        "suffixe":" M"
+      },
+      "Largeur":{
+        "type":"decimal(5,2)",
+        "col":"largeur",
+        "icon":"setting_ethernet",
+        "suffixe":" M"
+      },
+      "Hauteur":{
+        "type":"decimal(5,2)",
+        "col":"hauteur",
+        "icon":"height",
+        "suffixe":" M"
+      },
+      "Charge":{
+        "type":"decimal(8,2)",
+        "col":"charge",
+        "icon":"view_carousel",
+        "suffixe":" Kg"
+      },
+      "Tarif":{
+        "type":"decimal(5,2)",
+        "col":"prix_km",
+        "label":"Prix/Km",
+        "icon":"euro",
+        "suffixe":" €"
+      },
+      "Image":{
+        "type":"image",
+        "col":"logo",
+        "path": "Images/Vehicule"
+      }
+    },
+    "cond": {
+      "id": {
+        "col": "id",
+        "type": "int(12)",
+        "required": true,
+        "operator": "="
+      }
+    },
+    "constants":[],
+    "ignore": false
+  },
+  "Categorie":{
+    "table": "categorie_vehicule",
+    "auth": [],
+    "columns": {
+      "Nom":{
+        "type":"varchar(30)",
+        "col":"nom",
+        "label":"Intitulé"
+      },
+      "Prix":{
+        "type":"decimal(5,2)",
+        "col":"prix_km"
+      },
+      "Logo":{
+        "type":"image",
+        "col":"logo",
+        "path": "Images/Categorie"
+      }
+    },
+    "name": "Modifier une catégorie de véhicule",
+    "cond": {
+      "Nom": {
+        "col": "Nom",
+        "type": "varchar(50)",
+        "required": true,
+        "operator": "="
+      }
+    },
+    "constants":[]
+  }
+}

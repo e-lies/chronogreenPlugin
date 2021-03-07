@@ -1,0 +1,258 @@
+{
+  "Categorie":{
+    "table": "categorie_vehicule",
+    "auth": [[]],
+    "columns": {
+      "Nom":{
+        "type":"varchar(30)",
+        "col":"nom",
+        "label":"Intitulé"
+      },
+      "Prix":{
+        "type":"decimal(5,2)",
+        "col":"prix_km"
+      },
+      "Logo":{
+        "type":"image",
+        "col":"logo",
+        "path": "Images/Categorie"
+      }
+    },
+    "name": "Catégorie de véhicule",
+    "constants": [],
+    "ignore": false
+  },
+  "Vehicule":{
+    "table": "type_vehicule",
+    "auth": [[]],
+    "columns": {
+      "idCategorie":{
+        "type":"foreign",
+        "col":"id_categorie",
+        "label":"Catégorie",
+        "foreign":{
+          "table":"categorie_vehicule",
+          "primary":"id",
+          "label":"nom",
+          "image":"categorie_vehicule.logo"
+        }
+      },
+      "Nom":{
+        "type":"varchar(50)",
+        "col":"nom",
+        "label":"Intitulé"
+      },
+      "Longueur":{
+        "type":"decimal(5,2)",
+        "col":"longueur",
+        "icon":"trending_flat",
+        "suffixe":" M"
+      },
+      "Largeur":{
+        "type":"decimal(5,2)",
+        "col":"largeur",
+        "icon":"setting_ethernet",
+        "suffixe":" M"
+      },
+      "Hauteur":{
+        "type":"decimal(5,2)",
+        "col":"hauteur",
+        "icon":"height",
+        "suffixe":" M"
+      },
+      "Charge":{
+        "type":"decimal(8,2)",
+        "col":"charge",
+        "icon":"view_carousel",
+        "suffixe":" Kg"
+      },
+      "Tarif":{
+        "type":"decimal(5,2)",
+        "col":"prix_km",
+        "label":"Prix/Km",
+        "icon":"euro",
+        "suffixe":" €"
+      },
+      "Image":{
+        "type":"image",
+        "col":"logo",
+        "path": "Images/Vehicule"
+      }
+    },
+    "name": "Type de véhicule",
+    "constants": [],
+    "ignore": false
+  },
+  "Devis": {
+    "table": "devis",
+    "auth": [[]],
+    "columns": {
+      "Recuperation": {
+        "type": "address",
+        "label": "Adresse de prise en charge",
+        "suffix": "",
+        "col": "recuperation",
+        "required": true,
+        "icon": "place",
+        "length":4
+      },
+      "Livraison": {
+        "type": "address",
+        "label": "Adresse de livraison",
+        "suffix": "",
+        "col": "livraison",
+        "required": true,
+        "icon": "place",
+        "length":4
+      },
+      "dateHeure": {
+        "type": "datetimeF",
+        "col": "date_heure_recuperation",
+        "length":4,
+        "label": "Date & heure",
+        "icon": "schedule",
+        "required": "true"
+      },
+      "idVehicule": {
+        "type":"foreign",
+        "col": "id_vehicule",
+        "label": "Type véhicule",
+        "icon": "",
+        "required": true,
+        "length":4,
+        "foreign": {
+          "table": "type_vehicule",
+          "primary": "id",
+          "label": "nom",
+          "image": "type_vehicule.logo"
+        }
+      },
+      "idClient": {
+        "type":"foreign",
+        "col": "id_client",
+        "label": "Client",
+        "icon": "",
+        "required": false,
+        "foreign": {
+          "table": "client",
+          "primary": "id"
+        }
+      },
+      "Distance":{
+        "type":"int",
+        "col":"distance",
+        "suffixe":" Km"
+      },
+      "Duration":{
+        "type":"int",
+        "col":"duration",
+        "suffixe":" min"
+      },
+      "Details":{
+        "type":"text(100,10)",
+        "col":"details",
+        "label":"Détails à nous préciser...",
+        "icon":"comment",
+        "length":4
+      }
+    },
+    "name": "Devis de livraison",
+    "constants": [],
+    "ignore": false
+  },
+  "Client": {
+    "table": "client",
+    "auth": [[]],
+    "columns": {
+      "Nom": {
+        "type": "varchar(30)",
+        "label": "Nom",
+        "suffix": "",
+        "col": "nom",
+        "length":3,
+        "required": true,
+        "unique": false,
+        "icon": "person",
+        "populate": false
+      },
+      "Prenom": {
+        "type": "varchar(255)",
+        "label": "Prénom",
+        "suffix": "",
+        "col": "prenom",
+        "length":3,
+        "required": true,
+        "unique": false,
+        "icon": "person_add",
+        "populate": false
+      },
+      "Mail": {
+        "type": "varchar(40)",
+        "label": "Mail",
+        "col": "mail",
+        "length":3,
+        "required": true,
+        "unique": true,
+        "icon": "email"
+      },
+      "Telephone": {
+        "type": "tel",
+        "label": "Téléphone",
+        "col": "telephone",
+        "length":3,
+        "required": false,
+        "unique": false,
+        "icon": "local_phone"
+      },
+      "Ville": {
+        "type": "varchar(50)",
+        "label": "Ville",
+        "suffix": "",
+        "col": "ville",
+        "length":3,
+        "required": false,
+        "unique": false,
+        "icon": "place"
+      },
+      "Entreprise":{
+        "type":"varchar(100)",
+        "col":"entreprise",
+        "length":3,
+        "icon":"business"
+      }
+    },
+    "name": "Clients",
+    "constants": []
+  },
+  "Articles":{
+    "table":"articles_devis",
+    "auth":[],
+    "columns":{
+      "idDevis":{
+        "type":"foreign",
+        "col":"id_devis",
+        "foreign":{
+          "table":"devis",
+          "primary":"id",
+          "label":"concat((select nom from client where id=devis.id_client),' (le ',devis.date_heure_recuperation,')')"
+        }
+      },
+      "Intitule":{
+        "type":"varchar(100)",
+        "col":"intitule",
+        "label":"Intitulé",
+        "icon":"format_list_bulleted",
+        "length":3,
+        "required":true
+      },
+      "Qte":{
+        "type":"int(6)",
+        "col":"qte",
+        "label":"Quantité",
+        "icon":"filter_1",
+        "length":2,
+        "required":true
+      }
+    }
+  }
+}

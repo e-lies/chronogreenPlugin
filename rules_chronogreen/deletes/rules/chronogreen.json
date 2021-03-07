@@ -1,0 +1,44 @@
+{ 
+  "Client":{
+    "table": "client",
+    "auth":[],
+    "cond": {
+      "id": {
+        "type": "int(11)",
+        "label": "id",
+        "col": "id",
+        "operator": "in",
+        "required": true
+      }
+    },
+    "name": "Supprimer un client"
+  },
+  "Devis": {
+    "table": "devis",
+    "auth": [],
+    "cond": {
+      "id": {
+        "type": "int(11)",
+        "label": "id",
+        "col": "id",
+        "operator": "in",
+        "required": true
+      }
+    },
+    "name": "Supprimer un devis"
+  },
+  "Vehicule": {
+    "table": "type_vehicule",
+    "auth": [],
+    "cond":{
+      "id": {
+        "type": "int(11)",
+        "label": "id",
+        "col": "id",
+        "operator": "=",
+        "required": true
+      }
+    },
+    "name":"Supprimer un véhicule"
+  }
+}

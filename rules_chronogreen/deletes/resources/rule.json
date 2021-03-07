@@ -1,0 +1,41 @@
+{
+  "auth": [
+    {
+      "variable": "role",
+      "operator": "in",
+      "value": [
+        "super",
+        "admin"
+      ]
+    },
+    {
+      "variable": "coast",
+      "operator": "<",
+      "value": 200
+    }
+  ],
+  "constants": [
+    {
+      "col": "",
+      "value": ""
+    }
+  ],
+  "conflict": "ignore, cancel, update",
+  "columns": {
+    "label": {
+      "name": "id",
+      "type": "foreign",
+      "icon": "",
+      "suffix": "",
+      "required": true,
+      "unique": true,
+      "nullable": true,
+      "foreign": {
+        "table": "",
+        "primary": "the primary index",
+        "label": "sql query with col autocomplete  //select cette chaine from table where ext",
+        "where": ""
+      }
+    }
+  }
+}

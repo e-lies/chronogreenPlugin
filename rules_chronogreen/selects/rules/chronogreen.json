@@ -1,0 +1,166 @@
+{
+  "Categorie":{
+    "table": "categorie_vehicule",
+    "auth": [],
+    "columns": {
+      "Nom":{
+        "type":"varchar(30)",
+        "col":"nom",
+        "label":"Intitulé"
+      },
+      "Prix":{
+        "type":"decimal(5,2)",
+        "col":"prix_km"
+      },
+      "Logo":{
+        "type":"image",
+        "col":"logo"
+      }
+    },
+    "name": "Catégories de véhicule"
+  },
+  "Vehicule": {
+    "table": "v_categorie_vehicule",
+    "auth": [],
+    "columns": {
+      "id": {
+        "type": "primary",
+        "col": "idVehicule"
+      },
+      "idCategorie":{
+        "type":"foreign",
+        "col":"idCategorie",
+        "label":"Catégorie",
+        "foreign":{
+          "table":"categorie_vehicule",
+          "primary":"id",
+          "label":"nom",
+          "image":"categorie_vehicule.logo"
+        }
+      },
+      "Categorie":{
+        "type":"varchar(25)",
+        "col":"Categorie",
+        "label":"Catégorie"
+      },
+      "idVehicule": {
+        "type": "foreigns",
+        "col": "idVehicule",
+        "label": "Véhicule",
+        "foreign": {
+          "table": "type_vehicule",
+          "primary": "id",
+          "label": "nom",
+          "image":"type_vehicule.logo"
+        }
+      },
+      "Vehicule":{
+        "type":"varchar(50)",
+        "col":"Vehicule",
+        "label":"Véhicule"
+      },
+      "Longueur":{
+        "type":"decimal(5,2)",
+        "col":"Longueur",
+        "icon":"trending_flat",
+        "suffixe":" M",
+        "filtrable":["min"]
+      },
+      "Largeur":{
+        "type":"decimal(5,2)",
+        "col":"Largeur",
+        "icon":"settings_ethernet",
+        "suffixe":" M",
+        "filtrable":["min"]
+      },
+      "Hauteur":{
+        "type":"decimal(5,2)",
+        "col":"Hauteur",
+        "icon":"height",
+        "suffixe":" M",
+        "filtrable":["min"]
+      },
+      "Volume":{
+        "type":"decimal(5,2)",
+        "col":"Volume",
+        "icon":"zoom_out_map",
+        "suffixe":" M3"
+      },
+      "Charge":{
+        "type":"decimal(8,2)",
+        "col":"Charge",
+        "icon":"view_carousel",
+        "suffixe":" Kg",
+        "filtrable":["min"]
+      },
+      "Tarif":{
+        "type":"decimal(5,2)",
+        "col":"PrixKm",
+        "label":"Prix/Km",
+        "icon":"euro",
+        "suffixe":" €"
+      },
+      "Image":{
+        "type":"image",
+        "col":"Logo"
+      }
+    },
+    "name": "Véhicules"
+  },
+  "Devis": {
+    "table": "devis",
+    "auth": [],
+    "columns": {
+      "id": {
+        "type": "primary",
+        "col": "id"
+      },
+      "idClient":{
+        "type":"foreign",
+        "col":"id_client",
+        "label":"Client",
+        "foreign":{
+          "table":"client",
+          "primary":"id",
+          "label":"nom"
+        }
+      },
+      "idVehicule":{
+        "type":"foreign",
+        "col":"id_vehicule",
+        "label":"Véhicule",
+        "icon":"local_shipping",
+        "foreign":{
+          "table":"type_vehicule",
+          "primary":"id",
+          "label":"type_vehicule.nom"
+        }
+      },
+      "Recuperation":{
+        "type":"address",
+        "col":"recuperation",
+        "label":"Adresse récupération"
+      },
+      "Livraison":{
+        "type":"address",
+        "col":"livraison",
+        "label":"Adresse livraison"
+      },
+      "Distance":{
+        "type":"int",
+        "col":"distance",
+        "suffixe":" Km"
+      },
+      "dateHeure":{
+        "type":"datetime",
+        "col":"date_heure_recuperation",
+        "label":"Date heure récupération",
+        "icon":"today"
+      }
+    },
+    "where": [],
+    "limit": [],
+    "name": "Ventes",
+    "cache_delay": "300"
+  }
+}

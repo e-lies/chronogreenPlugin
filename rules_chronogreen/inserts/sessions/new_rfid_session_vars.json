@@ -1,0 +1,28 @@
+{
+  "vars": {
+    "role": {
+      "type": "enum",
+      "values": [
+        "Administrateur",
+        "Gestionnaire",
+        "Client",
+        "Chauffeur"
+      ]
+    },
+    "idUser": {
+      "type": "int"
+    },
+    "userName": {
+      "type": "varchar"
+    },
+    "mail":{
+      "type":"varchar"
+    },
+    "phone":{
+      "type":"varchar"
+    },
+    "dhConnexion":{
+      "type":"datetime"
+    }
+  }
+}

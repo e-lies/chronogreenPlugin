@@ -1,0 +1,27 @@
+"ventes": {
+        "autorisation": [{"role":"admin"},{"role":"vendeur","position":3}],
+        "param": {
+            "view":"v_ventes_detail_benef",
+            "filters":[true,false,false,false,true],
+            "types":["int","date","time","varchar","varchar","varchar","varchar","varchar","varchar","int","decimal(10,2)","decimal(10,2)","decimal(10,2)","decimal(10,2)"],
+            "cols":["Commande","Date","Heure","Client","Vendeur","Famille","Marque","Couleur","Article","Quantite","PU","Reduction","Cout","Benefice"],
+            "labels":["Commande","Date","Heure","Client","Vendeur","Famille","Marque","Couleur","Article","Quantité","PU","Réduction","Cout","Bénefice"],
+            "suffixe":["","","","","","","","","",""," Da"," Da"," Da"," Da"],
+            "list":["Client","Vendeur","Famille","Marque"],
+            "ext":" where Quantite > 50 AND Vendeur like 'session(user)'"
+        }
+    },
+
+"ventes": {
+            "autorisation": [{"role":"admin"},{"role":"vendeur","position":3}],
+        "param": {
+            "view":"v_ventes_detail_benef",
+            "filters":[true,false,false,false,true],
+            "types":["int","date","time","varchar","varchar","varchar","varchar","varchar","varchar","int","decimal(10,2)","decimal(10,2)","decimal(10,2)","decimal(10,2)"],
+            "cols":["Commande","Date","Heure","Client","Vendeur","Famille","Marque","Couleur","Article","Quantite","PU","Reduction","Cout","Benefice"],
+            "labels":["Commande","Date","Heure","Client","Vendeur","Famille","Marque","Couleur","Article","Quantité","PU","Réduction","Cout","Bénefice"],
+            "suffixe":["","","","","","","","","",""," Da"," Da"," Da"," Da"],
+            "list":["Client","Vendeur","Famille","Marque"],
+            "ext":" where Quantite > 50 AND Vendeur like 'session(user)'"
+        }
+    },
